@@ -35,18 +35,19 @@ jobs:
         include: ${{ fromJson(needs.prepare.outputs.variants) }}
     runs-on: ubuntu-latest
     container:
-      image: espressif/idf:latest
+      image: espressif/idf:v5.3
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-      - name: Build current variant
+      - name: Clean build environment & execute build
         shell: bash
-        env:
-          IDF_COMPONENT_MANAGER: "0"
         run: |
           source $IDF_PATH/export.sh
-          python scripts/build.py ${{ matrix.board }} --name ${{ matrix.name }}
+          rm -rf build dependencies.lock managed_components
+          python scripts/build.py ${{ matrix.board }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
