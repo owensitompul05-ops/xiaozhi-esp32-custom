@@ -3,10 +3,15 @@
 
 #include <driver/gpio.h>
 
+// Force preset LCD 7-Pin ST7789 240x240 tanpa CS
+#ifndef CONFIG_LCD_ST7789_240X240_7PIN
+#define CONFIG_LCD_ST7789_240X240_7PIN 1
+#endif
+
 #define AUDIO_INPUT_SAMPLE_RATE  16000
 #define AUDIO_OUTPUT_SAMPLE_RATE 24000
 
-// 如果使用 Duplex I2S 模式，请注释下面一行
+// Jika menggunakan Duplex I2S模式, silakan hapus komentar baris di bawah ini
 #define AUDIO_I2S_METHOD_SIMPLEX
 
 #ifdef AUDIO_I2S_METHOD_SIMPLEX
@@ -20,7 +25,7 @@
 
 #else
 
-#define AUDIO_I2S_GPIO_WS GPIO_NUM_4
+#define AUDIO_I2S_GPIO_WS   GPIO_NUM_4
 #define AUDIO_I2S_GPIO_BCLK GPIO_NUM_5
 #define AUDIO_I2S_GPIO_DIN  GPIO_NUM_6
 #define AUDIO_I2S_GPIO_DOUT GPIO_NUM_7
@@ -34,32 +39,32 @@
 #define VOLUME_UP_BUTTON_GPIO   GPIO_NUM_NC
 #define VOLUME_DOWN_BUTTON_GPIO GPIO_NUM_NC
 
-//Camera Config
-#define CAMERA_PIN_D0 GPIO_NUM_11
-#define CAMERA_PIN_D1 GPIO_NUM_9
-#define CAMERA_PIN_D2 GPIO_NUM_8
-#define CAMERA_PIN_D3 GPIO_NUM_10
-#define CAMERA_PIN_D4 GPIO_NUM_12
-#define CAMERA_PIN_D5 GPIO_NUM_18
-#define CAMERA_PIN_D6 GPIO_NUM_17
-#define CAMERA_PIN_D7 GPIO_NUM_16
-#define CAMERA_PIN_XCLK GPIO_NUM_15
-#define CAMERA_PIN_PCLK GPIO_NUM_13
+// Camera Config
+#define CAMERA_PIN_D0    GPIO_NUM_11
+#define CAMERA_PIN_D1    GPIO_NUM_9
+#define CAMERA_PIN_D2    GPIO_NUM_8
+#define CAMERA_PIN_D3    GPIO_NUM_10
+#define CAMERA_PIN_D4    GPIO_NUM_12
+#define CAMERA_PIN_D5    GPIO_NUM_18
+#define CAMERA_PIN_D6    GPIO_NUM_17
+#define CAMERA_PIN_D7    GPIO_NUM_16
+#define CAMERA_PIN_XCLK  GPIO_NUM_15
+#define CAMERA_PIN_PCLK  GPIO_NUM_13
 #define CAMERA_PIN_VSYNC GPIO_NUM_6
-#define CAMERA_PIN_HREF GPIO_NUM_7
-#define CAMERA_PIN_SIOC GPIO_NUM_5
-#define CAMERA_PIN_SIOD GPIO_NUM_4
-#define CAMERA_PIN_PWDN GPIO_NUM_NC
+#define CAMERA_PIN_HREF  GPIO_NUM_7
+#define CAMERA_PIN_SIOC  GPIO_NUM_5
+#define CAMERA_PIN_SIOD  GPIO_NUM_4
+#define CAMERA_PIN_PWDN  GPIO_NUM_NC
 #define CAMERA_PIN_RESET GPIO_NUM_NC
-#define XCLK_FREQ_HZ 20000000
+#define XCLK_FREQ_HZ     20000000
 
-
-#define DISPLAY_BACKLIGHT_PIN GPIO_NUM_38
-#define DISPLAY_MOSI_PIN      GPIO_NUM_20
-#define DISPLAY_CLK_PIN       GPIO_NUM_19
-#define DISPLAY_DC_PIN        GPIO_NUM_47
-#define DISPLAY_RST_PIN       GPIO_NUM_21
-#define DISPLAY_CS_PIN        GPIO_NUM_45
+// Display Config (Disesuaikan untuk GMT130-V1.0 7-Pin)
+#define DISPLAY_BACKLIGHT_PIN GPIO_NUM_7   // Pin Backlight (BLK)
+#define DISPLAY_MOSI_PIN      GPIO_NUM_11  // Pin Data (SDA)
+#define DISPLAY_CLK_PIN       GPIO_NUM_12  // Pin Clock (SCK)
+#define DISPLAY_DC_PIN        GPIO_NUM_5   // Pin Data/Command (DC)
+#define DISPLAY_RST_PIN       GPIO_NUM_4   // Pin Reset (RES)
+#define DISPLAY_CS_PIN        GPIO_NUM_NC  // Nonaktifkan CS (GPIO_NUM_NC)
 
 
 #ifdef CONFIG_LCD_ST7789_240X320
@@ -204,7 +209,7 @@
 #define DISPLAY_MIRROR_X true
 #define DISPLAY_MIRROR_Y true
 #define DISPLAY_SWAP_XY false
-#define DISPLAY_INVERT_COLOR  false
+#define DISPLAY_INVERT_COLOR    false
 #define DISPLAY_RGB_ORDER  LCD_RGB_ELEMENT_ORDER_BGR
 #define DISPLAY_OFFSET_X  0
 #define DISPLAY_OFFSET_Y  32
