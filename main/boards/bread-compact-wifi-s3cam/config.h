@@ -5,13 +5,13 @@
 
 // Force preset LCD 7-Pin ST7789 240x240 tanpa CS
 #ifndef CONFIG_LCD_ST7789_240X240_7PIN
-#define CONFIG_LCD_ST7789_240X240_7PIN 1
+#define CONFIG_LCD_ST7789_240X240_7PIN
 #endif
 
 #define AUDIO_INPUT_SAMPLE_RATE  16000
 #define AUDIO_OUTPUT_SAMPLE_RATE 24000
 
-// Jika menggunakan Duplex I2S模式, silakan hapus komentar baris di bawah ini
+// Jika menggunakan Duplex I2S 模式, silakan hapus komentar baris di bawah ini
 #define AUDIO_I2S_METHOD_SIMPLEX
 
 #ifdef AUDIO_I2S_METHOD_SIMPLEX
@@ -58,13 +58,13 @@
 #define CAMERA_PIN_RESET GPIO_NUM_NC
 #define XCLK_FREQ_HZ     20000000
 
-// Display Config (Disesuaikan untuk GMT130-V1.0 7-Pin)
-#define DISPLAY_BACKLIGHT_PIN GPIO_NUM_7   // Pin Backlight (BLK)
-#define DISPLAY_MOSI_PIN      GPIO_NUM_11  // Pin Data (SDA)
-#define DISPLAY_CLK_PIN       GPIO_NUM_12  // Pin Clock (SCK)
-#define DISPLAY_DC_PIN        GPIO_NUM_5   // Pin Data/Command (DC)
-#define DISPLAY_RST_PIN       GPIO_NUM_4   // Pin Reset (RES)
-#define DISPLAY_CS_PIN        GPIO_NUM_NC  // Nonaktifkan CS (GPIO_NUM_NC)
+// Display Config (Disesuaikan untuk GMT130 7-Pin No CS)
+#define DISPLAY_BACKLIGHT_PIN GPIO_NUM_7   // Pin BLK
+#define DISPLAY_MOSI_PIN      GPIO_NUM_11  // Pin SDA
+#define DISPLAY_CLK_PIN       GPIO_NUM_12  // Pin SCL/SCK
+#define DISPLAY_DC_PIN        GPIO_NUM_5   // Pin DC
+#define DISPLAY_RST_PIN       GPIO_NUM_4   // Pin RES/RST
+#define DISPLAY_CS_PIN        GPIO_NUM_NC  // Disabled CS
 
 
 #ifdef CONFIG_LCD_ST7789_240X320
@@ -305,7 +305,6 @@
 #define DISPLAY_BACKLIGHT_OUTPUT_INVERT false
 #define DISPLAY_SPI_MODE 0
 #endif
-
 
 // A MCP Test: Control a lamp
 #define LAMP_GPIO GPIO_NUM_14
