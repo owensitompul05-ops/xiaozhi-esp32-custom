@@ -1,14 +1,14 @@
 {
-    "type": "bread-compact-wifi-s3cam",
-    "target": "esp32s3",
-    "builds": [
-        {
-            "name": "bread-compact-wifi-s3cam",
-            "build_options": {
-                "display_model": "LCD_ST7789_240X240_7PIN",
-                "camera_hmirror": false,
-                "camera_vflip": false
-            }
-        }
-    ]
+  "type": "bread-compact-wifi-s3cam",
+  "target": "esp32s3",
+  "builds": [
+    {
+      "name": "bread-compact-wifi-s3cam",
+      "build_options": {
+        "display_model": "LCD_ST7789_240X240_7PIN",
+        "camera_hmirror": false,
+        "camera_vflip": false
+      }
+    }
+  ]
 }
