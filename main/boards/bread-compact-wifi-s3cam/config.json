@@ -5,12 +5,10 @@
         {
             "name": "bread-compact-wifi-s3cam",
             "build_options": {
+                "display_model": "LCD_ST7789_240X240_7PIN",
                 "camera_hmirror": false,
                 "camera_vflip": false
-            },
-            "sdkconfig_append": [
-                "CONFIG_LCD_CUSTOM=y"
-            ]
+            }
         }
     ]
 }
